@@ -65,6 +65,7 @@ public class UserTicketDAO {
             if (ticket != null){
                 ticket.setTicketType(ticketType);
             } else System.out.println("There is no ticket with id="+ticketId);
+            transaction.commit();
         }
     }
 
@@ -73,6 +74,7 @@ public class UserTicketDAO {
             Transaction transaction = session.beginTransaction();
             User user = session.get(User.class, id);
             session.remove(user);
+            transaction.commit();
             return true;
         } catch (Exception e){
             return false;
